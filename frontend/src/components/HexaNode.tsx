@@ -65,9 +65,9 @@ const HexaNode: React.FC<HexaNodeProps> = ({ name, erdaCosts, totalErda }) => {
             onChange={(e) => handleGoalChange(e.target.value)}
           />
         </div>
-        <div className="spent">{spent}</div>
-        <div className="remaining">{remaining}</div>
-        <div className="total">{totalErda[1]}</div>
+        <div className="non-input-numbers">{spent}</div>
+        <div className="non-input-numbers">{remaining}</div>
+        <div className="non-input-numbers">{totalErda[1]}</div>
       </div>
     </>
   );

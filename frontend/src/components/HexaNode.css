@@ -6,19 +6,26 @@ input {
 }
 .component-container {
   width: 100%;
-  /* background-color: brown; */
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
+  padding: 5px;
+  margin: 5px;
 }
 
 .skill-name {
-  /* background-color: blue; */
   width: 150px;
   padding: 5px;
 }
 
 .curr-level {
-  /* background-color: green; */
+}
+
+.goal-level {
+}
+
+.non-input-numbers {
+  width: 50px;
+  padding: 5px;
 }
