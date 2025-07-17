@@ -1,31 +1,76 @@
-function HexaNode(props: any) {
+import { useState } from "react";
+import "./HexaNode.css";
+
+type HexaNodeProps = {
+  name: string;
+  erdaCosts: readonly any[];
+  totalErda: readonly any[];
+};
+
+const HexaNode: React.FC<HexaNodeProps> = ({ name, erdaCosts, totalErda }) => {
+  const parseNumber = (value: string) => {
+    if (value === "" || value === "-") {
+      return 0;
+    }
+    if (!/^\d*$/.test(value)) {
+      return 0;
+    }
+    if (value.length > 1 && value.startsWith("0")) {
+      value = String(Number(value));
+    }
+    let parsedNum = Number(value);
+    if (isNaN(parsedNum)) {
+      return 0;
+    }
+    if (parsedNum > 30) {
+      parsedNum = 30;
+    }
+    if (parsedNum < 0) {
+      parsedNum = 0;
+    }
+    return parsedNum;
+  };
+  const [currLevel, setCurr] = useState(0);
+  const handleCurrChange = (value: string) => {
+    let parsedNum = parseNumber(value);
+    setCurr(parsedNum);
+  };
+
+  const [goalLevel, setGoal] = useState(30);
+  const handleGoalChange = (value: string) => {
+    let parsedNum = parseNumber(value);
+    setGoal(parsedNum);
+  };
+
+  const spent = erdaCosts[currLevel][1];
+  const remaining = totalErda[1] - spent;
+
   return (
     <>
-      <div>
-        <div>
-          <p>{props.name}</p>
+      <div className="component-container">
+        <div className="skill-name">{name}</div>
+        <div className="curr-level">
+          <input
+            type="text"
+            value={currLevel}
+            placeholder="0"
+            onChange={(e) => handleCurrChange(e.target.value)}
+          />
         </div>
-        <div>
-          <input type="text" placeholder="0" />
+        <div className="goal-level">
+          <input
+            type="text"
+            value={goalLevel}
+            placeholder="30"
+            onChange={(e) => handleGoalChange(e.target.value)}
+          />
         </div>
-        <div>
-          <input type="text" placeholder="30" />
-        </div>
-        <div>
-          {/* spent */}
-          <p>0</p>
-        </div>
-        <div>
-          {/* remaining */}
-          <p>0</p>
-        </div>
-        <div>
-          {/* total */}
-          <p>0</p>
-        </div>
+        <div className="spent">{spent}</div>
+        <div className="remaining">{remaining}</div>
+        <div className="total">{totalErda[1]}</div>
       </div>
     </>
   );
-}
+};
 
 export default HexaNode;

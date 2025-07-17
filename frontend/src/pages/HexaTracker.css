@@ -1,0 +1,7 @@
+.card-container {
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  /* background-color: aqua; */
+  align-items: center;
+}
