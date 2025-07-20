@@ -10,8 +10,21 @@ input {
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
+  border-radius: 10px;
   padding: 5px;
   margin: 5px;
+}
+
+.component-container.skill {
+  background-color: rgb(76 26 76);
+}
+
+.component-container.mastery {
+  background-color: rgb(115 38 38);
+}
+
+.component-container.enhance {
+  background-color: #633636;
 }
 
 .skill-name {

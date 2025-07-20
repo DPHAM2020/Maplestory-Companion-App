@@ -3,11 +3,17 @@ import "./HexaNode.css";
 
 type HexaNodeProps = {
   name: string;
+  hexaType: string;
   erdaCosts: readonly any[];
   totalErda: readonly any[];
 };
 
-const HexaNode: React.FC<HexaNodeProps> = ({ name, erdaCosts, totalErda }) => {
+const HexaNode: React.FC<HexaNodeProps> = ({
+  name,
+  hexaType,
+  erdaCosts,
+  totalErda,
+}) => {
   const parseNumber = (value: string) => {
     if (value === "" || value === "-") {
       return 0;
@@ -47,7 +53,7 @@ const HexaNode: React.FC<HexaNodeProps> = ({ name, erdaCosts, totalErda }) => {
 
   return (
     <>
-      <div className="component-container">
+      <div className={`component-container ${hexaType}`}>
         <div className="skill-name">{name}</div>
         <div className="curr-level">
           <input
