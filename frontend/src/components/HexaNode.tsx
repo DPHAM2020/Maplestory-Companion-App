@@ -4,16 +4,30 @@ import "./HexaNode.css";
 type HexaNodeProps = {
   name: string;
   hexaType: string;
+  currLevel: number;
+  goalLevel: number;
   erdaCosts: readonly any[];
   totalErda: readonly any[];
+  onCurrChange: (coreName: string, newLevel: number) => void;
+  onGoalChange: (coreName: string, newLevel: number) => void;
 };
 
 const HexaNode: React.FC<HexaNodeProps> = ({
   name,
   hexaType,
+  currLevel,
+  goalLevel,
   erdaCosts,
   totalErda,
+  onCurrChange,
+  onGoalChange,
 }) => {
+  const fragsSpent = erdaCosts[currLevel][1];
+  const energySpent = erdaCosts[currLevel][0];
+
+  const fragsRemaining = erdaCosts[goalLevel][1] - fragsSpent;
+  const energyRemaining = erdaCosts[goalLevel][0] - energySpent;
+
   const parseNumber = (value: string) => {
     if (value === "" || value === "-") {
       return 0;
@@ -36,20 +50,15 @@ const HexaNode: React.FC<HexaNodeProps> = ({
     }
     return parsedNum;
   };
-  const [currLevel, setCurr] = useState(0);
-  const handleCurrChange = (value: string) => {
-    let parsedNum = parseNumber(value);
-    setCurr(parsedNum);
-  };
 
-  const [goalLevel, setGoal] = useState(30);
-  const handleGoalChange = (value: string) => {
-    let parsedNum = parseNumber(value);
-    setGoal(parsedNum);
+  const handleCurrChange = (input: string) => {
+    let processedNum = parseNumber(input);
+    onCurrChange(name, processedNum);
   };
-
-  const spent = erdaCosts[currLevel][1];
-  const remaining = totalErda[1] - spent;
+  const handleGoalChange = (input: string) => {
+    let processedNum = parseNumber(input);
+    onGoalChange(name, processedNum);
+  };
 
   return (
     <>
@@ -71,9 +80,18 @@ const HexaNode: React.FC<HexaNodeProps> = ({
             onChange={(e) => handleGoalChange(e.target.value)}
           />
         </div>
-        <div className="non-input-numbers">{spent}</div>
-        <div className="non-input-numbers">{remaining}</div>
-        <div className="non-input-numbers">{totalErda[1]}</div>
+        <div className="non-input-numbers">
+          <div>{fragsSpent} frags</div>
+          <div>{energySpent} energy</div>
+        </div>
+        <div className="non-input-numbers">
+          <div>{fragsRemaining >= 0 ? fragsRemaining : 0} frags</div>
+          <div>{energyRemaining >= 0 ? energyRemaining : 0} energy</div>
+        </div>
+        <div className="non-input-numbers">
+          <div>{totalErda[1]} frags</div>
+          <div>{totalErda[0]} energy</div>
+        </div>
       </div>
     </>
   );

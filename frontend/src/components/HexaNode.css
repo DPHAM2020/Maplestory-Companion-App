@@ -5,7 +5,8 @@ input {
   border-radius: 10px;
 }
 .component-container {
-  width: 100%;
+  width: 800px;
+  height: 70px;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -39,6 +40,6 @@ input {
 }
 
 .non-input-numbers {
-  width: 50px;
+  width: 80px;
   padding: 5px;
 }
