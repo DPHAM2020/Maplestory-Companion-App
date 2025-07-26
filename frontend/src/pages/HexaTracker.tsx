@@ -149,9 +149,9 @@ function HexaTracker() {
       core.runningTotal[core.goalLevel][0] -
       core.runningTotal[core.currLevel][0];
     if (diff > 0) {
-      return sum + core.runningTotal[core.goalLevel][0];
+      return sum + diff;
     }
-    return 0;
+    return sum;
   }, 0);
 
   const fragsRemaining = coreData.reduce((sum, core) => {
@@ -159,9 +159,9 @@ function HexaTracker() {
       core.runningTotal[core.goalLevel][1] -
       core.runningTotal[core.currLevel][1];
     if (diff > 0) {
-      return sum + core.runningTotal[core.goalLevel][1];
+      return sum + diff;
     }
-    return 0;
+    return sum;
   }, 0);
 
   return (
@@ -191,6 +191,8 @@ function HexaTracker() {
           />
         ))}
         <div className="total-row">
+          <div className="total-item"></div>
+          <div className="total-item"></div>
           <div className="total-item" id="total-title">
             <h2>Total</h2>
           </div>
@@ -198,11 +200,11 @@ function HexaTracker() {
             <div>{fragsSpent} frags</div>
             <div>{energySpent} energy</div>
           </div>
-          <div className="total-item">
+          <div className="total-item" id="total-remaining">
             <div>{fragsRemaining} frags</div>
             <div>{energyRemaining} energy</div>
           </div>
-          <div className="total-item" id="grand-total">
+          <div className="total-item">
             <div>26940 frags</div>
             <div>351 energy</div>
           </div>

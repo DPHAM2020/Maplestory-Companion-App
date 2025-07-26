@@ -5,6 +5,8 @@
 }
 
 header {
+  width: 900px;
+  height: 70px;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -21,9 +23,10 @@ header {
   text-align: center;
   font-style: bold;
   font-weight: 700;
-  width: 80px;
+  width: 130px;
+  padding: 5px;
   margin: 5px 12px;
-  padding: 0px 10px;
+  padding: 5px;
 }
 
 .card-container {
@@ -34,20 +37,21 @@ header {
 }
 
 .total-row {
-  width: 800px;
+  width: 900px;
   height: 70px;
   display: flex;
   flex-direction: row;
-  justify-content: right;
+  justify-content: space-evenly;
+  align-items: center;
+  border-radius: 10px;
   padding: 5px;
   margin: 5px;
 }
 
 .total-item {
   /* background-color: red; */
-  width: 100px;
+  width: 130px;
   padding: 5px;
-  margin-left: 20px;
 }
 
 #total-title {
@@ -55,7 +59,6 @@ header {
   padding-bottom: 10px;
 }
 
-#grand-total {
-  width: 100px;
-  margin-right: 20px;
+#total-remaining {
+  background-color: rgb(88, 79, 79);
 }

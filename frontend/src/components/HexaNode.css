@@ -5,7 +5,7 @@ input {
   border-radius: 10px;
 }
 .component-container {
-  width: 800px;
+  width: 900px;
   height: 70px;
   display: flex;
   flex-direction: row;
@@ -29,17 +29,20 @@ input {
 }
 
 .skill-name {
-  width: 150px;
+  width: 130px;
   padding: 5px;
 }
 
-.curr-level {
+.hexa-node-column {
+  /* background-color: blueviolet; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 130px;
+  height: 50px;
+  padding: 5px;
 }
-
-.goal-level {
-}
-
 .non-input-numbers {
-  width: 80px;
+  width: 130px;
   padding: 5px;
 }

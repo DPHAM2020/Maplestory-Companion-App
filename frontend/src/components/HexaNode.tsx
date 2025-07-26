@@ -63,8 +63,8 @@ const HexaNode: React.FC<HexaNodeProps> = ({
   return (
     <>
       <div className={`component-container ${hexaType}`}>
-        <div className="skill-name">{name}</div>
-        <div className="curr-level">
+        <div className="hexa-node-column">{name}</div>
+        <div className="hexa-node-column">
           <input
             type="text"
             value={currLevel}
@@ -72,7 +72,7 @@ const HexaNode: React.FC<HexaNodeProps> = ({
             onChange={(e) => handleCurrChange(e.target.value)}
           />
         </div>
-        <div className="goal-level">
+        <div className="hexa-node-column">
           <input
             type="text"
             value={goalLevel}
